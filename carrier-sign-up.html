@@ -28,6 +28,50 @@
     <link rel="stylesheet" href="assets/css/plugins/unicons.css">
     <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Hide default checkbox */
+        .custom-checkbox input {
+            display: none;
+        }
+
+        /* Style the label to align text and checkbox */
+        .custom-checkbox label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Custom checkbox box */
+        .custom-checkbox label span {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #007bff;
+            border-radius: 4px;
+            display: inline-block;
+            position: relative;
+            margin-right: 8px;
+        }
+
+        /* Checkbox tick (appears when checked) */
+        .custom-checkbox input:checked + label span::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 1px;
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        /* Checked state */
+        .custom-checkbox input:checked + label span {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+    </style>
     <!-- MAIN STYLE SHEET -->
     <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
   </head>
@@ -214,11 +258,14 @@
                         <label>Void Cheque</label>
                         <input type="hidden" id="photo" name="void" role="uploadcare-uploader" data-multiple="true" data-system-dialog="true" data-public-key="58d3d7575b61aab23bad" />
                       </div>
-                      <p>By clicking on 'Sign Up', you agree to our Terms &amp; Conditions. We'll contact you soon regarding our services. </p>
-                      <p>
-                        <label>
-                          <input type="checkbox" required> By clicking checkbox, you agree to receive emails and SMS from us. </label>
-                      </p>
+    <div class="custom-checkbox">
+        <input type="checkbox" id="agree" required>
+        <label for="agree">
+            By clicking this checkbox, you agree to our Terms &amp; Conditions, and to receive emails and SMS from us.
+        </label>
+		
+    </div>
+	<p></p>
                       <button type="submit" class="rts-btn btn-primary">Submit</button>
                     </div>
                   </form>
